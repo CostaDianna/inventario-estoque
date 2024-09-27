@@ -1,0 +1,36 @@
+// prisma/schema.prisma
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Produto {
+  id          Int         @id @default(autoincrement())
+  nome        String
+  descricao   String
+  preco       Float
+  codigoBarras String   @unique
+  fornecedores ProdutoFornecedor[]
+}
+
+model Fornecedor {
+  id          Int           @id @default(autoincrement())
+  nome        String
+  cnpj        String
+  endereco    String
+  contato     String
+  produtos    ProdutoFornecedor[]
+}
+
+model ProdutoFornecedor {
+  produtoId    Int
+  fornecedorId Int
+  produto      Produto     @relation(fields: [produtoId], references: [id])
+  fornecedor   Fornecedor  @relation(fields: [fornecedorId], references: [id])
+
+  @@id([produtoId, fornecedorId])  // Chave primária composta
+}
