@@ -1,4 +1,4 @@
--- CreateTable
+
 CREATE TABLE "Produto" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "nome" TEXT NOT NULL,
@@ -7,7 +7,6 @@ CREATE TABLE "Produto" (
     "codigoBarras" TEXT NOT NULL
 );
 
--- CreateTable
 CREATE TABLE "Fornecedor" (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "nome" TEXT NOT NULL,
@@ -16,7 +15,7 @@ CREATE TABLE "Fornecedor" (
     "contato" TEXT NOT NULL
 );
 
--- CreateTable
+
 CREATE TABLE "ProdutoFornecedor" (
     "produtoId" INTEGER NOT NULL,
     "fornecedorId" INTEGER NOT NULL,
